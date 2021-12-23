@@ -24,6 +24,7 @@ const mix = require('laravel-mix');
     mix
     .js("resources/js/app.js", "public/js")
     // .js("resources/js/alphine.js", "public/js")
+    .css('resources/css/datatables.css','public/css')
     .vue()
     // .sass("resources/sass/bootstrap.scss", "public/css")
     .postCss("resources/css/app.css", "public/css", [

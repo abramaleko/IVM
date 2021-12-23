@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\InvoiceController;
+use App\Http\Livewire\NewInvoice;
+use App\Http\Livewire\PendingInvoices;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,12 +21,17 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::resource('invoice',InvoiceController::class)
-->except('index','create');
 
 Auth::routes([ 'register'=> false,]);
 
 
+Route::get('/invoice/new', NewInvoice::class)
+->middleware('auth')
+->name('new-invoice');
 
+
+Route::get('/invoice/pending', PendingInvoices::class)
+->middleware('auth')
+->name('pending-invoice');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
