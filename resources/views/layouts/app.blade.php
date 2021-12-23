@@ -114,7 +114,7 @@
                                         class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700">
                                         Pending Invoices
                                     </a>
-                                    <a to="/invoice/processed" role="menuitem"
+                                    <a href="{{route('processed-invoice')}}" role="menuitem"
                                         class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700">
                                         Processed Invoices
                                     </a>

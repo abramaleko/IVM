@@ -3,6 +3,7 @@
 use App\Http\Controllers\InvoiceController;
 use App\Http\Livewire\NewInvoice;
 use App\Http\Livewire\PendingInvoices;
+use App\Http\Livewire\ProcessedInvoices;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,5 +34,9 @@ Route::get('/invoice/new', NewInvoice::class)
 Route::get('/invoice/pending', PendingInvoices::class)
 ->middleware('auth')
 ->name('pending-invoice');
+
+Route::get('/invoice/processed', ProcessedInvoices::class)
+->middleware('auth')
+->name('processed-invoice');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
