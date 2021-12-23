@@ -46,7 +46,7 @@
                             <!-- Dashboards links -->
                             <div x-data="{ isActive: false}">
                                 <!-- active & hover classes 'bg-blue-100 dark:bg-blue-600' -->
-                                <a to="/home"
+                                <a href="/home"
                                     class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600 hover:text-white"
                                     :class="{'bg-blue-100 dark:bg-blue-600 text-white': isActive}" role="button"
                                     aria-haspopup="true" :aria-expanded="(isActive) ? 'true' : 'false'">

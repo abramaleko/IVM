@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\InvoiceController;
+use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\NewInvoice;
 use App\Http\Livewire\PendingInvoices;
 use App\Http\Livewire\ProcessedInvoices;
@@ -39,4 +39,7 @@ Route::get('/invoice/processed', ProcessedInvoices::class)
 ->middleware('auth')
 ->name('processed-invoice');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', Dashboard::class)
+->middleware('auth')
+->name('home');
+
