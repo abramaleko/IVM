@@ -1329,6 +1329,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-placeholder-opacity: 1;
   color: rgb(107 114 128 / var(--tw-placeholder-opacity));
 }
+.placeholder-stone-700::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(68 64 60 / var(--tw-placeholder-opacity));
+}
+.placeholder-stone-700:-ms-input-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(68 64 60 / var(--tw-placeholder-opacity));
+}
+.placeholder-stone-700::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(68 64 60 / var(--tw-placeholder-opacity));
+}
 .opacity-0 {
   opacity: 0;
 }
@@ -1720,6 +1732,21 @@ Ensure the default browser behavior of the `hidden` attribute.
     color: rgb(0 0 0 / var(--tw-text-opacity));
   }
 
+  .dark\:placeholder-stone-700::-moz-placeholder {
+    --tw-placeholder-opacity: 1;
+    color: rgb(68 64 60 / var(--tw-placeholder-opacity));
+  }
+
+  .dark\:placeholder-stone-700:-ms-input-placeholder {
+    --tw-placeholder-opacity: 1;
+    color: rgb(68 64 60 / var(--tw-placeholder-opacity));
+  }
+
+  .dark\:placeholder-stone-700::placeholder {
+    --tw-placeholder-opacity: 1;
+    color: rgb(68 64 60 / var(--tw-placeholder-opacity));
+  }
+
   .dark\:opacity-75 {
     opacity: 0.75;
   }
@@ -1921,6 +1948,11 @@ Ensure the default browser behavior of the `hidden` attribute.
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
+
+  .md\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
 }
 
   @media (min-width: 1024px) {
@@ -1948,6 +1980,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:w-full {
     width: 100%;
+  }
+
+  .lg\:p-8 {
+    padding: 2rem;
   }
 
   .lg\:px-8 {

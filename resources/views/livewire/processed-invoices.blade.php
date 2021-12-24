@@ -23,8 +23,8 @@
             </h1>
 
             <div class="mb-12" style='border-bottom: 2px solid #eaeaea'>
-                <ul class='flex cursor-pointer'>
-                    <li @click="showChicken=true" class='px-8 py-2 rounded-t-lg '
+                <ul class='flex text-xs cursor-pointer md:text-base '>
+                    <li @click="showChicken=true" class='px-4 py-2 rounded-t-lg lg:px-8 '
                         :class="showChicken ? 'bg-blue-500 text-white ' : 'text-gray-500 bg-gray-200'">
                         Chicken Rearing Project
                     </li>

@@ -425,8 +425,9 @@
                                 <div x-data="{ isActive: true, open: false}">
                                     <!-- active & hover classes 'bg-blue-100 dark:bg-blue-600' -->
                                     <a href="/home"
-                                        class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600"
-                                        :class="{'bg-blue-100 dark:bg-blue-600 text-white': isActive }" role="button"
+                                        class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600 {{ request()->routeIs('home') ? 'bg-blue-100 dark:bg-blue-600 text-white' : '' }}"
+                                        {{-- :class="{'bg-blue-100 dark:bg-blue-600 text-white': isActive }" --}}
+                                         role="button"
                                         aria-haspopup="true" :aria-expanded="(isActive) ? 'true' : 'false'">
                                         <span aria-hidden="true">
                                             <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -445,8 +446,9 @@
                                 <div x-data="{ isActive: false, open: false }">
                                     <!-- active classes 'bg-blue-100 dark:bg-blue-600' -->
                                     <a href="" @click="$event.preventDefault(); open = !open"
-                                        class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600"
-                                        :class="{ 'bg-blue-100 dark:bg-blue-600 text-white': isActive || open }" role="button"
+                                        class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600 {{! request()->routeIs('home') ? 'bg-blue-100 dark:bg-blue-600 text-white' : '' }}"
+                                        {{-- :class="{ 'bg-blue-100 dark:bg-blue-600 text-white': isActive || open }" --}}
+                                         role="button"
                                         aria-haspopup="true" :aria-expanded="(open || isActive) ? 'true' : 'false'">
                                         <span aria-hidden="true">
                                             <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -531,7 +533,7 @@
                     </header>
 
                     <!-- Main content -->
-                    <div class="flex flex-1 h-full p-8">
+                    <div class="flex flex-1 h-full p-4 lg:p-8">
                         <main>
                             {{$slot}}
                         </main>
