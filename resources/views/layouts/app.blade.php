@@ -533,7 +533,7 @@
                     </header>
 
                     <!-- Main content -->
-                    <div class="flex flex-1 h-full p-4 lg:p-8">
+                    <div class="h-full p-4 lg:p-8">
                         <main>
                             {{$slot}}
                         </main>
