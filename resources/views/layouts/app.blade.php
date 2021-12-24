@@ -44,10 +44,10 @@
                         <!-- Sidebar links -->
                         <nav aria-label="Main" class="flex-1 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto">
                             <!-- Dashboards links -->
-                            <div x-data="{ isActive: false}">
+                            <div>
                                 <!-- active & hover classes 'bg-blue-100 dark:bg-blue-600' -->
                                 <a href="/home"
-                                    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600 hover:text-white"
+                                    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600 hover:text-white {{ request()->routeIs('home') ? 'bg-blue-100 dark:bg-blue-600 text-white' : '' }}"
                                     :class="{'bg-blue-100 dark:bg-blue-600 text-white': isActive}" role="button"
                                     aria-haspopup="true" :aria-expanded="(isActive) ? 'true' : 'false'">
                                     <span aria-hidden="true">
@@ -82,8 +82,7 @@
                             <div x-data="{ isActive: true, open: false }">
                                 <!-- active classes 'bg-blue-100 dark:bg-blue-600' -->
                                 <a href="#" @click="$event.preventDefault(); open = !open"
-                                    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600 hover:text-white"
-                                    :class="{ 'bg-blue-100 dark:bg-blue-600 text-white': isActive || open }" role="button"
+                                    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600 hover:text-white {{! request()->routeIs('home') ? 'bg-blue-100 dark:bg-blue-600 text-white' : '' }}"
                                     aria-haspopup="true" :aria-expanded="(open || isActive) ? 'true' : 'false'">
                                     <span aria-hidden="true">
                                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -235,7 +234,7 @@
                                 </button>
 
                                 <!-- Notification button -->
-                                <button @click="openNotificationsPanel"
+                                {{-- <button @click="openNotificationsPanel"
                                     class="p-2 text-blue-400 transition-colors duration-200 rounded-full bg-blue-50 hover:text-blue-600 hover:bg-blue-100 dark:hover:text-light dark:hover:bg-blue-700 dark:bg-dark focus:outline-none focus:bg-blue-100 dark:focus:bg-blue-700 focus:ring-blue-800">
                                     <span class="sr-only">Open Notification panel</span>
                                     <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -243,10 +242,10 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                                     </svg>
-                                </button>
+                                </button> --}}
 
                                 <!-- Search button -->
-                                <button @click="openSearchPanel"
+                                {{-- <button @click="openSearchPanel"
                                     class="p-2 text-blue-400 transition-colors duration-200 rounded-full bg-blue-50 hover:text-blue-600 hover:bg-blue-100 dark:hover:text-light dark:hover:bg-blue-700 dark:bg-dark focus:outline-none focus:bg-blue-100 dark:focus:bg-blue-700 focus:ring-blue-800">
                                     <span class="sr-only">Open search panel</span>
                                     <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -254,7 +253,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                     </svg>
-                                </button>
+                                </button> --}}
 
                                 <!-- Settings button -->
                                 <button @click="openSettingsPanel"
@@ -291,14 +290,14 @@
                                         @keydown.escape="open = false"
                                         class="absolute right-0 w-48 py-1 bg-white rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 dark:bg-dark focus:outline-none"
                                         tabindex="-1" role="menu" aria-orientation="vertical" aria-label="User menu">
-                                        <a href="#" role="menuitem"
+                                        {{-- <a href="#" role="menuitem"
                                             class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600">
                                             Your Profile
-                                        </a>
-                                        <a href="#" role="menuitem"
+                                        </a> --}}
+                                        {{-- <a href="#" role="menuitem"
                                             class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600">
                                             Settings
-                                        </a>
+                                        </a> --}}
                                         <a href="#" role="menuitem"
                                             class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600"
                                             onclick="event.preventDefault();
@@ -345,7 +344,7 @@
                                     </button>
 
                                     <!-- Notification button -->
-                                    <button
+                                    {{-- <button
                                         @click="openNotificationsPanel(); $nextTick(() => { isMobileSubMenuOpen = false })"
                                         class="p-2 text-blue-400 transition-colors duration-200 rounded-full bg-blue-50 hover:text-blue-600 hover:bg-blue-100 dark:hover:text-light dark:hover:bg-blue-700 dark:bg-dark focus:outline-none focus:bg-blue-100 dark:focus:bg-blue-700 focus:ring-blue-800">
                                         <span class="sr-only">Open notifications panel</span>
@@ -354,10 +353,10 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                                         </svg>
-                                    </button>
+                                    </button> --}}
 
                                     <!-- Search button -->
-                                    <button
+                                    {{-- <button
                                         @click="openSearchPanel(); $nextTick(() => { $refs.searchInput.focus(); setTimeout(() => {isMobileSubMenuOpen= false}, 100) })"
                                         class="p-2 text-blue-400 transition-colors duration-200 rounded-full bg-blue-50 hover:text-blue-600 hover:bg-blue-100 dark:hover:text-light dark:hover:bg-blue-700 dark:bg-dark focus:outline-none focus:bg-blue-100 dark:focus:bg-blue-700 focus:ring-blue-800">
                                         <span class="sr-only">Open search panel</span>
@@ -366,7 +365,7 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                         </svg>
-                                    </button>
+                                    </button> --}}
 
                                     <!-- Settings button -->
                                     <button @click="openSettingsPanel(); $nextTick(() => { isMobileSubMenuOpen = false })"
@@ -402,14 +401,14 @@
                                         x-transition:leave-end="translate-y-1/2 opacity-0" @click.away="open = false"
                                         class="absolute right-0 w-48 py-1 origin-top-right bg-white rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 dark:bg-dark"
                                         role="menu" aria-orientation="vertical" aria-label="User menu">
-                                        <a href="#" role="menuitem"
+                                        {{-- <a href="#" role="menuitem"
                                             class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600">
                                             Your Profile
-                                        </a>
-                                        <a href="#" role="menuitem"
+                                        </a> --}}
+                                        {{-- <a href="#" role="menuitem"
                                             class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600">
                                             Settings
-                                        </a>
+                                        </a> --}}
                                         <a href="#" role="menuitem"
                                             class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600">
                                             Logout
@@ -425,7 +424,7 @@
                                 <!-- Dashboards links -->
                                 <div x-data="{ isActive: true, open: false}">
                                     <!-- active & hover classes 'bg-blue-100 dark:bg-blue-600' -->
-                                    <a
+                                    <a href="/home"
                                         class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600"
                                         :class="{'bg-blue-100 dark:bg-blue-600 text-white': isActive }" role="button"
                                         aria-haspopup="true" :aria-expanded="(isActive) ? 'true' : 'false'">
@@ -445,7 +444,7 @@
                                 <!-- Components links -->
                                 <div x-data="{ isActive: false, open: false }">
                                     <!-- active classes 'bg-blue-100 dark:bg-blue-600' -->
-                                    <a href="#" @click="$event.preventDefault(); open = !open"
+                                    <a href="" @click="$event.preventDefault(); open = !open"
                                         class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600"
                                         :class="{ 'bg-blue-100 dark:bg-blue-600 text-white': isActive || open }" role="button"
                                         aria-haspopup="true" :aria-expanded="(open || isActive) ? 'true' : 'false'">
@@ -470,18 +469,18 @@
                                     <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Components">
                                         <!-- active & hover classes 'text-gray-700 dark:text-light' -->
                                         <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
-                                        <a href="#" role="menuitem"
+                                        <a href="{{route('new-invoice')}}" role="menuitem"
                                             class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700">
                                             New Request
                                         </a>
-                                        <a href="#" role="menuitem"
+                                        <a href="{{route('pending-invoice')}}" role="menuitem"
                                             class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700">
                                             Pending Invoices
                                         </a>
-                                        <a href="#" role="menuitem"
-                                            class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700">
-                                            Processed Invoices
-                                        </a>
+                                        <a href="{{route('processed-invoice')}}" role="menuitem"
+                                        class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700">
+                                        Processed Invoices
+                                       </a>
                                     </div>
                                 </div>
 
@@ -624,7 +623,7 @@
 
                 <!-- Notification panel -->
                 <!-- Backdrop -->
-                <div x-transition:enter="transition duration-300 ease-in-out" x-transition:enter-start="opacity-0"
+                {{-- <div x-transition:enter="transition duration-300 ease-in-out" x-transition:enter-start="opacity-0"
                     x-transition:enter-end="opacity-100" x-transition:leave="transition duration-300 ease-in-out"
                     x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
                     x-show="isNotificationsPanelOpen" @click="isNotificationsPanelOpen = false"
@@ -858,11 +857,11 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> --}}
 
                 <!-- Search panel -->
                 <!-- Backdrop -->
-                <div x-transition:enter="transition duration-300 ease-in-out" x-transition:enter-start="opacity-0"
+                {{-- <div x-transition:enter="transition duration-300 ease-in-out" x-transition:enter-start="opacity-0"
                     x-transition:enter-end="opacity-100" x-transition:leave="transition duration-300 ease-in-out"
                     x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-show="isSearchPanelOpen"
                     @click="isSearchPanelOpen = false" class="fixed inset-0 z-10 bg-blue-800 bg-opacity-25"
@@ -969,7 +968,7 @@
                             </template>
                         </div>
                     </div>
-                </section>
+                </section> --}}
             </div>
         </div>
         @livewireScripts
