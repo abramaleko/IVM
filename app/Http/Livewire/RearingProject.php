@@ -16,6 +16,8 @@ class RearingProject extends Component
 
     public $search = '';
 
+    public $filter="",$range="",$showRange=false;
+
 
     public function setSelectedId(Invoices $invoice)
     {
@@ -35,6 +37,38 @@ class RearingProject extends Component
     public function updatingSearch()
     {
         $this->resetPage();
+    }
+
+    public function updatedFilter(){
+        switch ($this->filter) {
+            case '1':
+                $this->showRange=true;
+                break;
+                case '2':
+                    $this->showRange=false;
+                    $this->showSubmitted();
+
+                    break;
+                    case '3':
+                        $this->showRange=false;
+                        $this->showPendingSubmit();
+                        break;
+
+        }
+    }
+
+    public function updatedRange()
+    {
+        dd($this->range);
+    }
+
+    function showSubmitted()
+    {
+
+    }
+
+    function showPendingSubmit(){
+
     }
 
     public function render()

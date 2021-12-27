@@ -17,6 +17,39 @@
 
             <div class="container px-2 lg:mx-auto">
 
+                <div class="flex flex-wrap my-4">
+                   <div class="">
+                    <label for="filter" class="pr-4 text-lg tracking-wide text-gray-700 dark:text-light">
+                        Filter:
+                    </label>
+                    <select wire:model="filter"
+                    id="filter" class="px-6 py-2 text-gray-700 bg-white border-2 rounded-md focus:outline-none hover:border-blue-300">
+                        <option selected disabled value="">Choose ...</option>
+                        <option value="1">Amount</option>
+                        <option value="2">Submitted</option>
+                        <option value="3">Pending Submits</option>
+
+                    </select>
+                   </div>
+
+
+                   @if ($showRange)
+                   <div class="mt-3 text-sm lg:ml-4 lg:mt-0">
+                    <label for="range" class="pr-4 text-gray-700 dark:text-light">
+                        Amount Range (Tshs):
+                    </label>
+                    <select wire:model="range"
+                    id="range" class="px-6 py-2 text-gray-700 bg-white border-2 rounded-md focus:outline-none hover:border-blue-300">
+                        <option selected disabled value="">Choose ...</option>
+                        <option value="1">500,000 - 4,999,999 </option>
+                        <option value="2">5,000,000 - 9,999,999</option>
+                        <option value="3">10,000,000 - above</option>
+                    </select>
+                   </div>
+                   @endif
+
+                </div>
+
                 <!--chicken project-->
                 <section class="max-w-3xl antialiased text-gray-600 bg-gray-100 dark:bg-inherit">
                     <div class="flex flex-col justify-center h-full">
