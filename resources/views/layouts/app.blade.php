@@ -44,12 +44,12 @@
                         <!-- Sidebar links -->
                         <nav aria-label="Main" class="flex-1 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto">
                             <!-- Dashboards links -->
-                            <div>
+                            <div >
                                 <!-- active & hover classes 'bg-blue-100 dark:bg-blue-600' -->
                                 <a href="/home"
                                     class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600 hover:text-white {{ request()->routeIs('home') ? 'bg-blue-100 dark:bg-blue-600 text-white' : '' }}"
-                                    :class="{'bg-blue-100 dark:bg-blue-600 text-white': isActive}" role="button"
-                                    aria-haspopup="true" :aria-expanded="(isActive) ? 'true' : 'false'">
+                                    role="button"
+                                    aria-haspopup="true">
                                     <span aria-hidden="true">
                                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
