@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Livewire\CornProject;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\NewInvoice;
 use App\Http\Livewire\PendingInvoices;
-use App\Http\Livewire\ProcessedInvoices;
+use App\Http\Livewire\RearingProject;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,9 +36,14 @@ Route::get('/invoice/pending', PendingInvoices::class)
 ->middleware('auth')
 ->name('pending-invoice');
 
-Route::get('/invoice/processed', ProcessedInvoices::class)
+
+Route::get('/invoice/processed/chicken_rearing', RearingProject::class)
 ->middleware('auth')
-->name('processed-invoice');
+->name('rearing-project');
+
+Route::get('/invoice/processed/corn_project', CornProject::class)
+->middleware('auth')
+->name('corn-project');
 
 Route::get('/home', Dashboard::class)
 ->middleware('auth')
