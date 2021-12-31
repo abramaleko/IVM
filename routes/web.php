@@ -19,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+
+Route::permanentRedirect('/', '/login');
+
 
 
 Auth::routes([ 'register'=> false,]);
@@ -37,7 +37,7 @@ Route::get('/invoice/pending', PendingInvoices::class)
 ->name('pending-invoice');
 
 
-Route::get('/invoice/processed/chicken_rearing', RearingProject::class)
+Route::get('/invoice/processed/chicken_rearing/{filter?}/{range?}', RearingProject::class)
 ->middleware('auth')
 ->name('rearing-project');
 
