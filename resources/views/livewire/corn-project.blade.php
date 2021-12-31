@@ -178,7 +178,7 @@
                 </p>
 
                 <div class="flex flex-row my-4 text-lg text-gray-700">
-                    <span class="mr-3 text-lg">{{$selectedInvoice->submit ? 'Submitted to Customer' : 'Not Submitted Yet'}}</span>
+                    <span class="mr-3 text-lg dark:text-light">{{$selectedInvoice->submit ? 'Submitted to Customer' : 'Not Submitted Yet'}}</span>
                     <div class="relative w-12 h-6 transition duration-200 ease-linear rounded-full {{$submitToClient ? 'bg-green-400' : 'bg-gray-400'}}">
                       <label for="toggle"
                              class="absolute left-0 w-6 h-6 mb-2 transition duration-100 ease-linear transform bg-white border-2 rounded-full cursor-pointer
@@ -190,7 +190,7 @@
                              wire:model="submitToClient"/>
                 </div>
                 </div>
-                
+
                 <div class="mt-4 text-lg font-bold text-gray-600 dark:text-light">
                     Download Invoice :
                 </div>
