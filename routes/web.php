@@ -41,7 +41,7 @@ Route::get('/invoice/processed/chicken_rearing/{filter?}/{range?}', RearingProje
 ->middleware('auth')
 ->name('rearing-project');
 
-Route::get('/invoice/processed/corn_project', CornProject::class)
+Route::get('/invoice/processed/corn_project/{filter?}/{range?}', CornProject::class)
 ->middleware('auth')
 ->name('corn-project');
 

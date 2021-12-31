@@ -17,6 +17,19 @@
 
             <div class="container px-2 lg:mx-auto">
 
+                <div class="my-4">
+                    <label for="filter" class="pr-4 text-lg tracking-wide text-gray-700 dark:text-light">
+                        Filter:
+                    </label>
+                    <select wire:model="filter" id="filter"
+                        class="px-6 py-2 text-gray-700 bg-white border-2 rounded-md focus:outline-none hover:border-blue-300">
+                        <option selected disabled value="">Choose ...</option>
+                        <option value="0">All Records</option>
+                        <option value="1">Submitted</option>
+                        <option value="2">Pending Submits</option>
+                    </select>
+                </div>
+
                <!--Corn project-->
                <section class="max-w-3xl antialiased text-gray-600 bg-gray-100 dark:bg-inherit"
                >
@@ -60,6 +73,9 @@
                                                <div class="font-semibold text-left">Acres</div>
                                            </th>
                                            <th class="p-2 whitespace-nowrap">
+                                            <div class="font-semibold text-center">Submitted</div>
+                                        </th>
+                                           <th class="p-2 whitespace-nowrap">
                                                <div class="font-semibold text-left">Date requested</div>
                                            </th>
                                            <th class="p-2 whitespace-nowrap">
@@ -68,6 +84,11 @@
                                        </tr>
                                    </thead>
                                    <tbody class="text-sm divide-y divide-gray-100">
+                                    <div wire:loading.delay wire:target="search">
+                                        <span class="py-6 pl-8 text-lg text-blue-800">
+                                            Searching...
+                                        </span>
+                                    </div>
                                        @foreach ($cornProject as $invoices)
                                            <tr class="dark:text-light hover:bg-blue-100 dark:hover:text-gray-600 ">
                                                <td class="p-2 whitespace-nowrap">
@@ -82,6 +103,12 @@
                                                        {{ number_format($invoices->acres) }}
                                                    </div>
                                                </td>
+                                               <td class="flex justify-center p-2 whitespace-nowrap">
+                                                <div
+                                                    class="w-10 font-medium text-center border-b-2 rounded-md  {{ $invoices->submit ? 'text-blue-500 border-blue-400' : 'text-red-500 border-red-400' }}">
+                                                    {{ $invoices->submit ? 'Yes' : 'No' }}
+                                                </div>
+                                            </td>
                                                <td class="p-2 whitespace-nowrap">
                                                    <div class="font-medium text-left text-green-500">
                                                        {{ $invoices->created_at->diffForHumans() }}
@@ -149,6 +176,21 @@
                         class="font-semibold">{{ $selectedInvoice->created_at->format('jS F Y') }}
                     </span>
                 </p>
+
+                <div class="flex flex-row my-4 text-lg text-gray-700">
+                    <span class="mr-3 text-lg">{{$selectedInvoice->submit ? 'Submitted to Customer' : 'Not Submitted Yet'}}</span>
+                    <div class="relative w-12 h-6 transition duration-200 ease-linear rounded-full {{$submitToClient ? 'bg-green-400' : 'bg-gray-400'}}">
+                      <label for="toggle"
+                             class="absolute left-0 w-6 h-6 mb-2 transition duration-100 ease-linear transform bg-white border-2 rounded-full cursor-pointer
+                             {{$submitToClient ? 'translate-x-full border-green-400' : 'translate-x-0 border-gray-400'}}">
+                             </label>
+
+                      <input type="checkbox" id="toggle" name="toggle"
+                             class="w-full h-full appearance-none active:outline-none focus:outline-none"
+                             wire:model="submitToClient"/>
+                </div>
+                </div>
+                
                 <div class="mt-4 text-lg font-bold text-gray-600 dark:text-light">
                     Download Invoice :
                 </div>

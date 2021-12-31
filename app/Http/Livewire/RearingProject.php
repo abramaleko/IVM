@@ -12,9 +12,6 @@ class RearingProject extends Component
 {
     use WithPagination;
 
-    //holds all the filtered chicken project invoices
-    public $filterResults="";
-
     public $selectedInvoice,$submitToClient;
 
     public $search = '';
