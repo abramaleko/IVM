@@ -134,88 +134,102 @@
                 @if ($selectedInvoice->processed)
 
 
-                <div class="mt-4 text-lg font-bold text-gray-600 dark:text-light">
-                    Download Invoice :
-                 </div>
-                 <div class="flex flex-wrap mt-4">
-                     @foreach ($paths as $path)
-                     <div class="">
-                         <div class="p-8 mr-8 bg-white rounded">
-                             <svg class="w-6 h-5 text-blue-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                 <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
-                             </svg>
-                         </div>
-                           <a wire:click="downloadInvoice('{{$path}}')" class="block mt-2 text-base text-blue-500 cursor-pointer hover:text-gray-400 dark:text-light">
-                             Download
-                           </a>
-                     </div>
+                    <div class="mt-4 text-lg font-bold text-gray-600 dark:text-light">
+                        Download Invoice :
+                    </div>
+                    <div class="flex flex-wrap mt-4">
+                        @foreach ($paths as $path)
+                            <div class="">
+                                <div class="p-8 mr-8 bg-white rounded">
+                                    <svg class="w-6 h-5 text-blue-500" fill="currentColor"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <path
+                                            d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                                    </svg>
+                                </div>
+                                <a wire:click="downloadInvoice('{{ $path }}')"
+                                    class="block mt-2 text-base text-blue-500 cursor-pointer hover:text-gray-400 dark:text-light">
+                                    Download
+                                </a>
+                            </div>
 
-                     @endforeach
-                 </div>
+                        @endforeach
+                    </div>
 
                 @else
-                    <!--Invoice uploads-->
-                    <div class="relative flex items-center justify-center mt-6">
-                        <div class="absolute inset-0 z-0 opacity-60"></div>
-                        <div class="z-10 w-full p-10 bg-white sm:max-w-lg rounded-xl">
-                            <div class="">
-                                <h2 class="mt-5 text-3xl font-bold text-gray-900">
-                                    Invoice Upload!
-                                </h2>
-                                <p class="mt-2 text-sm text-gray-400">Upload here the invoices, supported formats are
-                                    pdf's and image formats of not greater than 5MB</p>
-                            </div>
-                            @error('invoiceDocs.*')
-                                <div class="mt-4">
-                                    <span class="font-semibold text-red-500 error">{{ $message }}</span>
+                    @can('upload-invoice')
+                        <!--Invoice uploads-->
+                        <div class="relative flex items-center justify-center mt-6">
+                            <div class="absolute inset-0 z-0 opacity-60"></div>
+                            <div class="z-10 w-full p-10 bg-white sm:max-w-lg rounded-xl">
+                                <div class="">
+                                    <h2 class="mt-5 text-3xl font-bold text-gray-900">
+                                        Invoice Upload!
+                                    </h2>
+                                    <p class="mt-2 text-sm text-gray-400">Upload here the invoices, supported formats are
+                                        pdf's and image formats of not greater than 5MB</p>
                                 </div>
-                            @enderror
-                            <form class="mt-8 space-y-3" wire:submit.prevent='UploadInvoice'>
-                                <div class="grid grid-cols-1 space-y-2">
-                                    <label class="text-sm font-bold tracking-wide text-gray-500">Attach Document</label>
-                                    <div class="flex items-center justify-center w-full">
-                                        <label
-                                            class="flex flex-col w-full p-10 text-center border-4 border-dashed rounded-lg h-60 group">
-                                            <div
-                                                class="flex flex-col items-center justify-center w-full h-full text-center ">
-                                                <div class="flex flex-auto w-2/5 mx-auto -mt-10 max-h-48">
-                                                    <img class="object-center has-mask h-36"
-                                                        src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg"
-                                                        alt="freepik image">
-                                                </div>
-                                                <p class="text-gray-500 pointer-none "><span class="text-sm">Drag
-                                                        and
-                                                        drop</span> files here <br /> or <a href="#" id="selectFile"
-                                                        class="text-blue-600 hover:underline">select a file</a> from
-                                                    your
-                                                    computer
-                                                </p>
-                                            </div>
-                                            <input type="file" class="hidden" id="uploadfile"
-                                                wire:model="invoiceDocs" multiple>
-                                            <script>
-                                                $('#selectFile').click(function() {
-                                                    $('#uploadfile').trigger('click');
-                                                });
-                                            </script>
-                                        </label>
+                                @error('invoiceDocs.*')
+                                    <div class="mt-4">
+                                        <span class="font-semibold text-red-500 error">{{ $message }}</span>
                                     </div>
-                                </div>
-                                @if (count($invoiceDocs) > 0)
-                                    <p class="text-sm text-blue-500">
-                                        <span>{{ count($invoiceDocs) }} file uploaded, click the submit button to
-                                            submit</span>
-                                    </p>
-                                @endif
-                                <div>
-                                    <button type="submit"
-                                        class="flex justify-center w-full p-4 my-5 font-semibold tracking-wide text-gray-100 transition duration-300 ease-in bg-blue-500 rounded-full shadow-lg cursor-pointer focus:outline-none focus:shadow-outline hover:bg-blue-600">
-                                        Submit
-                                    </button>
-                                </div>
-                            </form>
+                                @enderror
+                                <form class="mt-8 space-y-3" wire:submit.prevent='UploadInvoice'>
+                                    <div class="grid grid-cols-1 space-y-2">
+                                        <label class="text-sm font-bold tracking-wide text-gray-500">Attach Document</label>
+                                        <div class="flex items-center justify-center w-full">
+                                            <label
+                                                class="flex flex-col w-full p-10 text-center border-4 border-dashed rounded-lg h-60 group">
+                                                <div
+                                                    class="flex flex-col items-center justify-center w-full h-full text-center ">
+                                                    <div class="flex flex-auto w-2/5 mx-auto -mt-10 max-h-48">
+                                                        <img class="object-center has-mask h-36"
+                                                            src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg"
+                                                            alt="freepik image">
+                                                    </div>
+                                                    <p class="text-gray-500 pointer-none "><span class="text-sm">Drag
+                                                            and
+                                                            drop</span> files here <br /> or <a href="#" id="selectFile"
+                                                            class="text-blue-600 hover:underline">select a file</a> from
+                                                        your
+                                                        computer
+                                                    </p>
+                                                </div>
+                                                <input type="file" class="hidden" id="uploadfile"
+                                                    wire:model="invoiceDocs" multiple>
+                                                <script>
+                                                    $('#selectFile').click(function() {
+                                                        $('#uploadfile').trigger('click');
+                                                    });
+                                                </script>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    @if (count($invoiceDocs) > 0)
+                                        <p class="text-sm text-blue-500">
+                                            <span>{{ count($invoiceDocs) }} file uploaded, click the submit button to
+                                                submit</span>
+                                        </p>
+                                    @endif
+                                    <div>
+                                        <button type="submit"
+                                            class="flex justify-center w-full p-4 my-5 font-semibold tracking-wide text-gray-100 transition duration-300 ease-in bg-blue-500 rounded-full shadow-lg cursor-pointer focus:outline-none focus:shadow-outline hover:bg-blue-600">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    </div>
+                    @endcan
+                    @cannot('upload-invoice')
+                    <p class="py-4 text-lg text-gray-700 dark:text-light">
+                        Status: <span
+                            class="font-semibold text-red-500">
+                            Invoice not yet uploaded by Hq
+                        </span>
+                    </p>
+                    @endcannot
+
                 @endif
 
 
