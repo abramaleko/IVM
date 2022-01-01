@@ -159,7 +159,7 @@
                 @else
                     @can('upload-invoice')
                         <!--Invoice uploads-->
-                        <div class="relative flex items-center justify-center mt-6">
+                        <div class="relative flex mt-6">
                             <div class="absolute inset-0 z-0 opacity-60"></div>
                             <div class="z-10 w-full p-10 bg-white sm:max-w-lg rounded-xl">
                                 <div class="">
@@ -187,10 +187,8 @@
                                                             src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg"
                                                             alt="freepik image">
                                                     </div>
-                                                    <p class="text-gray-500 pointer-none "><span class="text-sm">Drag
-                                                            and
-                                                            drop</span> files here <br /> or <a href="#" id="selectFile"
-                                                            class="text-blue-600 hover:underline">select a file</a> from
+                                                    <p class="text-gray-500 pointer-none "><a href="#" id="selectFile"
+                                                            class="text-blue-600 hover:underline">Select files</a> from
                                                         your
                                                         computer
                                                     </p>

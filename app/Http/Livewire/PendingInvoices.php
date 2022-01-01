@@ -17,7 +17,7 @@ class PendingInvoices extends Component
 
      protected $rules = [
         'invoiceDocs' => 'required|max:3',
-        'invoiceDocs.*' => 'mimes:pdf,jpeg,jpg,png|max:5120', // 1MB Max
+        'invoiceDocs.*' => 'mimes:pdf,jpg,jpeg,png,webp|max:5120', // 1MB Max
     ];
 
     protected $messages = [
