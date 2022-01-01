@@ -44,7 +44,7 @@
             <div class="mt-4">
                 <label class="block text-base text-gray-600 dark:text-light" for="email">Email (optional)</label>
                 <input class="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" id="email" type="text"
-                    wire:model.defer="email" required="" placeholder="Enter Email" aria-label="Email" />
+                    wire:model.defer="email"  placeholder="Enter Email" aria-label="Email" />
                 @error('email')
                     <span class="text-sm font-semibold text-red-500">{{ $message }}</span>
                 @enderror
