@@ -144,7 +144,7 @@
     @else
         <div class="mb-4">
             <p class="text-lg font-bold text-green-500 cursor-pointer md:text-sm">&lt;&lt;
-                <a wire:click="resetSelected"
+                <a href="#" wire:click="resetSelected"
                     class="text-base font-bold text-green-500 no-underline md:text-sm hover:underline">
                     GO BACK
                 </a>

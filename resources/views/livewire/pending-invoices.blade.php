@@ -16,9 +16,9 @@
 
     <!--Pending -->
     @if (!$selectedInvoice)
-        <div class="container w-4/5 px-2 lg:mx-auto lg:w-full">
+        <div class="container">
             <!--Title-->
-            
+
             <!--Table-->
             <section class="max-w-3xl antialiased text-gray-600 bg-gray-100 dark:bg-inherit">
                 <div class="flex flex-col justify-center h-full">
