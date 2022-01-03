@@ -10,7 +10,7 @@ class PendingInvoices extends Component
 {
     use WithFileUploads;
 
-     public $pendingInvoices;
+    public $search= '';
      public $selectedInvoice;
      protected $listeners = ['refreshComponent' => '$refresh'];
      public $invoiceDocs=[],$paths=[];
@@ -25,13 +25,6 @@ class PendingInvoices extends Component
         'invoiceDocs.*.mimes' => 'The submitted document is not an image or pdf file.',
         'invoiceDocs.*.max' => 'The submitted document must not be greater than 5Mb',
     ];
-
-    public function mount()
-    {
-        $this->pendingInvoices=Invoices::where('processed',null)
-        ->orderBy('id','desc')
-        ->get();
-    }
 
     public function setSelectedId(Invoices $invoice)
     {
@@ -48,7 +41,7 @@ class PendingInvoices extends Component
 
     public function resetSelected()
      {
-         return redirect()->route('pending-invoice');
+         $this->reset('selectedInvoice');
      }
 
      public function UploadInvoice(){
@@ -77,6 +70,21 @@ class PendingInvoices extends Component
 
     public function render()
     {
-        return view('livewire.pending-invoices');
+       $pendingInvoices=$this->search != ''
+       ? Invoices::where('processed',null)
+                  ->where('name', 'like', '%'.$this->search.'%')
+                  ->orderBy('id','desc')
+                  ->paginate(10)
+
+       : Invoices::where('processed',null)
+       ->orderBy('id','desc')
+       ->paginate(10);
+
+
+
+
+        return view('livewire.pending-invoices',[
+            'pendingInvoices' => $pendingInvoices
+        ]);
     }
 }
