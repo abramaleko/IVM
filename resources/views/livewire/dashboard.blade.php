@@ -36,7 +36,7 @@
         <h1 class="text-xl font-bold text-gray-700 lg:text-3xl lg:py-0 dark:text-light">
             Invoice processed
         </h1>
-        <p class="px-4 my-8 text-sm text-gray-500">
+        <p class="px-4 my-8 text-sm text-gray-500 dark:text-light">
             Chart showing the ration of processed and pending invoices.
         </p>
          <div style="height: 400px !important; width:400px!important;">

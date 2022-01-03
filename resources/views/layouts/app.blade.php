@@ -433,7 +433,9 @@
                                             Settings
                                         </a> --}}
                                     <a href="#" role="menuitem"
-                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600">
+                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600"
+                                        onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
                                 </div>
