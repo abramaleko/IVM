@@ -113,7 +113,7 @@
                                                 </span>
                                             </div>
                                             @foreach ($chickenProject as $invoices)
-                                                <tr class="dark:text-light hover:bg-blue-100 dark:hover:text-gray-600 ">
+                                                <tr class="dark:text-light lg:hover:bg-blue-100 lg:dark:hover:text-gray-600 ">
                                                     <td class="p-2 whitespace-nowrap">
                                                         <div class="flex items-center">
                                                             <div class="font-medium ">
@@ -228,7 +228,7 @@
                                         d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                                 </svg>
                             </div>
-                            <a wire:click="downloadInvoice('{{ $path }}')"
+                            <a href="#" wire:click="downloadInvoice('{{ $path }}')"
                                 class="block mt-2 text-base text-blue-500 cursor-pointer hover:text-gray-400 dark:text-light">
                                 Download
                             </a>
